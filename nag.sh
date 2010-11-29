@@ -40,6 +40,15 @@ then
     then
         tail ~/.timelog
         old=$(sed -rn '$ s/^.{26}//p' ~/.timelog)
+
+        # Allocate new history file and delete it on exit.
+        HISTFILE=$(mktemp -t nag.XXXXXX)
+        trap "rm -f \"$HISTFILE\"" 0 TERM ERR QUIT
+
+        # Store a single copy of all unique entries in history file.
+        sed -rn 's/^.{26}//p' ~/.timelog | uniq > $HISTFILE
+        history -c                      # Clear all current history.
+        history -n                      # Read everything from history file.
     fi
     read -ep "$now " -i "${old-}" response
     set -- "$response"
