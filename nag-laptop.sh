@@ -1,2 +1,2 @@
 #!/bin/sh
-exec ssh flora.cyber.com.au -t ~/.bin/nag-server -w
+exec ssh heavy.cyber.com.au -t ~/.local/bin/nag-server -w
