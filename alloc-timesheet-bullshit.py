@@ -62,14 +62,20 @@ try:
     subprocess.run(
         ['alloc', 'submit'],
         check=True,
+        text=True,
         stdout=subprocess.PIPE,  # for --systemd-timer
         stderr=subprocess.PIPE,  # for --systemd-timer
-        input='\n'.join(timesheet_ids))
+        input=('\n'.join(timesheet_ids)
+               # Add a trailing line to workaround
+               # "alloc submit" brain damage.
+               # printf '123\n456' | alloc submit
+               # ==> submit 123 and 45 (not 456)!
+               + '\n'))
 except subprocess.CalledProcessError as e:
     body = (
         f'{e}\n'       # includes includes the command & the exit code
-        'STDOUT:\n{textwrap.indent(e.stdout.strip(), "    ")}\n'
-        'STDERR:\n{textwrap.indent(e.stderr.strip(), "    ")}\n')
+        f'STDOUT:\n{textwrap.indent(e.stdout.strip(), "    ")}\n'
+        f'STDERR:\n{textwrap.indent(e.stderr.strip(), "    ")}\n')
     if args.systemd_timer:
         subprocess.run(
             ['mail',
