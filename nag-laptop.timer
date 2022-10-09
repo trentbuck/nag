@@ -1,4 +1,3 @@
-# -*-conf-*-
 # Every ten minutes, weekdays only, 10AM to 6PM only.
 [Timer]
 OnCalendar=Mon..Fri 10..18:00/10
