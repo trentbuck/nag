@@ -1,0 +1,4 @@
+# -*-conf-*-
+[Service]
+Environment=INSIDE_CRON=true
+ExecStart=/home/twb/.bin/nag
