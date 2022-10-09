@@ -1,4 +1,3 @@
 # -*-conf-*-
 [Service]
-Environment=INSIDE_CRON=true
-ExecStart=/home/twb/.bin/nag
+ExecStart=screen nag-laptop

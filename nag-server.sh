@@ -21,22 +21,6 @@ set -eEu
 set -o pipefail
 trap 'echo >&2 "${0##*/}:${LINENO}: unknown error"' ERR
 
-# Cron is trying to popup a window.
-if test -n "${INSIDE_CRON-}"
-then
-    test -n "$(find /dev/tty?* /dev/pts -user "$EUID" -mmin -14 -print -quit)" || exit 0
-    # exit if "I'm not in the office"
-    #getent hosts flora.cyber.com.au >/dev/null || exit 0
-
-    exec screen -X screen -t nag ssh flora.cyber.com.au -t ~/.bin/nag -w
-fi
-
-
-# This is the laptop where I type.
-[[ $HOSTNAME == flora ]] ||
-exec ssh flora.cyber.com.au -t ~/.bin/nag "$@"
-
-
 # This is flora, where the file is read/written.
 while getopts wd: opt
 do  case "$opt" in
