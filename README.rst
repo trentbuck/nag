@@ -4,8 +4,8 @@ Initial documentation notes (not tested or anything yet):
 
        git clone https://github.com/trentbuck/nag ~/nag
        cd ~/nag
-       systemctl --user link nag-laptop.timer
-       systemctl --user link nag-laptop.service
+       systemctl --user link $PWD/nag-laptop.timer
+       systemctl --user link $PWD/nag-laptop.service
        systemctl --user enable --now nag-laptop.timer
        ln -s $PWD/nag-laptop.sh ~/.local/bin/nag-laptop
 
@@ -13,12 +13,12 @@ Initial documentation notes (not tested or anything yet):
 
        git clone https://github.com/trentbuck/nag ~/nag
        cd ~/nag
-       systemctl --user link alloc-timesheet-bullshit-hourly.service
-       systemctl --user link alloc-timesheet-bullshit-hourly.timer
-       systemctl --user link alloc-timesheet-bullshit-monthly.service
-       systemctl --user link alloc-timesheet-bullshit-monthly.timer
-       systemctl --user link nag2al.service
-       systemctl --user link nag2al.timer
+       systemctl --user link $PWD/alloc-timesheet-bullshit-hourly.service
+       systemctl --user link $PWD/alloc-timesheet-bullshit-hourly.timer
+       systemctl --user link $PWD/alloc-timesheet-bullshit-monthly.service
+       systemctl --user link $PWD/alloc-timesheet-bullshit-monthly.timer
+       systemctl --user link $PWD/nag2al.service
+       systemctl --user link $PWD/nag2al.timer
        systemctl --user enable --now alloc-timesheet-bullshit-monthly.timer
        systemctl --user enable --now alloc-timesheet-bullshit-hourly.timer
        systemctl --user enable --now nag2al.timer
