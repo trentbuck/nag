@@ -28,7 +28,15 @@ def get_timesheet_ids(*constraint_args):
     return set(timesheet_ids)
 
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(
+    epilog="""
+    In theory, I *never* need to look at timeSHEETS at all.
+    I just make sure my timesheet ITEMS are in alloc, and I am done.
+    In practice, this "timesheet submission" shit has to happen SOMEWHERE.
+    This has been fully automated for me since 2016 (or earlier).
+    This script implements that automation.
+    I tweaked the logic until managers and alloc both stopped sending error messages.
+    """)
 parser.add_argument(
     '--systemd-timer', action='store_true',
     help='if something goes wrong, send an email')
