@@ -1,3 +1,4 @@
 [Service]
 ExecSearchPath=/usr/local/bin/usr/bin:/bin:%h/.local/bin
-ExecStart=screen nag-laptop
+# NOTE: "screen -X screen y" not "screen y" because the latter requires a controlling terminal (even though it does not use it).
+ExecStart=screen -X screen nag-laptop
