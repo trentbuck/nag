@@ -1,4 +1,5 @@
 [Service]
+ExecSearchPath=/usr/local/bin/usr/bin:/bin:%h/.local/bin
 ExecStart=nag2al-wrapper
 
 # Backup the .timelog file.
