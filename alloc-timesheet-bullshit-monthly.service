@@ -1,0 +1,2 @@
+[Service]
+ExecStart=alloc-timesheet-bullshit --systemd-timer --all
