@@ -24,5 +24,5 @@ Initial documentation notes (not tested or anything yet):
        systemctl --user enable --now nag2al.timer
        ln -s $PWD/alloc-timesheet-bullshit.py ~/.local/bin/alloc-timesheet-bullshit
        ln -s $PWD/nag2al.sh                   ~/.local/bin/nag2al
-       ln -s $PWD/nag2al-wrapper.sh           ~/.local/bin/nagal-wrapper
+       ln -s $PWD/nag2al-wrapper.sh           ~/.local/bin/nag2al-wrapper
        ln -s $PWD/nag-server.sh               ~/.local/bin/nag-server
