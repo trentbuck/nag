@@ -8,6 +8,7 @@ Initial documentation notes (not tested or anything yet):
        systemctl --user link $PWD/nag-laptop.service
        systemctl --user enable --now nag-laptop.timer
        ln -s $PWD/nag-laptop.sh ~/.local/bin/nag-laptop
+       ln -s nag-laptop         ~/.local/bin/nag
 
 #. on heavy.cyber.com.au::
 
@@ -26,3 +27,4 @@ Initial documentation notes (not tested or anything yet):
        ln -s $PWD/nag2al.sh                   ~/.local/bin/nag2al
        ln -s $PWD/nag2al-wrapper.sh           ~/.local/bin/nag2al-wrapper
        ln -s $PWD/nag-server.sh               ~/.local/bin/nag-server
+       ln -s nag-server                       ~/.local/bin/nag
