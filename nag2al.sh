@@ -21,7 +21,8 @@ do
     then
         dur=$((($(date -d"$day $time" +%s) - $(date -d"$day1 $time1" +%s))))
         dur=$(((dur/900) + !!(dur%900)))                  # round to nearest 15min
-        [[ $comment1 =~ ^(email|food|home|fnord.*)$ ]] || # skip boring entries
+#       [[ $comment1 =~ ^(email|food|home|fnord.*)$ ]] || # skip boring entries
+#       [[ $task1 = '?????' && $comment1 =~ ^(home|fnord.*)$ ]] || # skip boring entries
         {
             echo alloc work -qt"$task1" -d"$day1" -h"$((dur*15))m" -c"${comment1:-NO COMMENT} [${time1%?????????}]"
             alloc work -qt"$task1" -d"$day1" -h"$((dur*15))m" -c"${comment1:-NO COMMENT} [${time1%?????????}]" || echo FAILED

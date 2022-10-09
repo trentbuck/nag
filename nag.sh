@@ -25,7 +25,12 @@ trap 'echo >&2 "${0##*/}:${LINENO}: unknown error"' ERR
 if test -n "${INSIDE_CRON-}"
 then
     test -n "$(find /dev/tty?* /dev/pts -user "$EUID" -mmin -14 -print -quit)" || exit 0
-    getent hosts flora.cyber.com.au >/dev/null || exit 0
+    # exit if "I'm not in the office"
+    #getent hosts flora.cyber.com.au >/dev/null || exit 0
+    # exit if it's not office hours on a weekday
+    case $(date +%a) in Sat|Sun) exit 0;; esac
+    case $(date +%H) in 10|11|12|13|14|15|16|17|18) :;; *) exit 0;; esac
+
     exec screen -X screen -t nag ssh flora.cyber.com.au -t ~/.bin/nag -w
 fi
 
@@ -64,7 +69,7 @@ then
         old=$(tail -1 "$HISTFILE")
         rm -f "$HISTFILE"
     fi
-    test -z "${wait-}" || sleep 5
+    test -z "${wait-}" || sleep 2
     read -ep $'\1'"$(tput setaf 2||:)"$'\2'"$now"$'\1'"$(tput sgr0||:)"$'\2'" " -i "${old-}" response
     set -- "$response"
 fi
