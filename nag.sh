@@ -27,9 +27,6 @@ then
     test -n "$(find /dev/tty?* /dev/pts -user "$EUID" -mmin -14 -print -quit)" || exit 0
     # exit if "I'm not in the office"
     #getent hosts flora.cyber.com.au >/dev/null || exit 0
-    # exit if it's not office hours on a weekday
-    case $(date +%a) in Sat|Sun) exit 0;; esac
-    case $(date +%H) in 10|11|12|13|14|15|16|17|18) :;; *) exit 0;; esac
 
     exec screen -X screen -t nag ssh flora.cyber.com.au -t ~/.bin/nag -w
 fi

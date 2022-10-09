@@ -1,6 +1,6 @@
 # -*-conf-*-
-# Every ten minutes.
+# Every ten minutes, weekdays only, 10AM to 6PM only.
 [Timer]
-OnCalendar=*:0/10
+OnCalendar=Mon..Fri 10..18:00/10
 [Install]
 WantedBy=timers.target
