@@ -17,8 +17,12 @@ Initial documentation notes (not tested or anything yet):
        systemctl --user link alloc-timesheet-bullshit-hourly.timer
        systemctl --user link alloc-timesheet-bullshit-monthly.service
        systemctl --user link alloc-timesheet-bullshit-monthly.timer
+       systemctl --user link nag2al.service
+       systemctl --user link nag2al.timer
        systemctl --user enable --now alloc-timesheet-bullshit-monthly.timer
        systemctl --user enable --now alloc-timesheet-bullshit-hourly.timer
+       systemctl --user enable --now nag2al.timer
        ln -s $PWD/alloc-timesheet-bullshit.py ~/.local/bin/alloc-timesheet-bullshit
        ln -s $PWD/nag2al.sh                   ~/.local/bin/nag2al
+       ln -s $PWD/nag2al-wrapper.sh           ~/.local/bin/nagal-wrapper
        ln -s $PWD/nag-server.sh               ~/.local/bin/nag-server

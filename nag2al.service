@@ -1,0 +1,7 @@
+[Service]
+ExecStart=nag2al-wrapper
+
+# Backup the .timelog file.
+# Almost certainly pointless now that it is on ZFS.
+Type=oneshot
+ExecStart=chronic ci -l "-mDaily commit." ~/.timelog
