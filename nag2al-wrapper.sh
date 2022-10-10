@@ -3,6 +3,8 @@
 # FIXME: this entire script is bullshit.
 #        rewrite nag2al in python, and fold these hacks into that.
 
+PATH="$PATH:$HOME/.local/bin"   # YUK.
+
 # Get all events with yesterday's timestamp.
 grep "^$(date -I -dyesterday)" ~/.timelog |
 
