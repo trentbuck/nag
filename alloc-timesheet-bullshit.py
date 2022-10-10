@@ -10,7 +10,11 @@ def get_timesheet_ids(*constraint_args):
     proc = subprocess.run(
         ['alloc', 'timesheets',
          # Only bother to request the field we actually want.
-         '--fields', 'ID',
+         # UPDATE: actually don't; it triggers bugs in "alloc submit":
+         #   printf '123\n456' | alloc submit ---> submits "45" not "456".
+         #   printf '\n'       | alloc submit ---> submits "" not nothing.
+         #   printf '123,a\n456,b' | alloc submit --> correct behaviour
+         # '--fields', 'ID',
          # "alloc submit" gets bitchy if we try to submit timesheets
          # in any other state.
          '--status', 'edit',
@@ -35,7 +39,7 @@ parser = argparse.ArgumentParser(
     In practice, this "timesheet submission" shit has to happen SOMEWHERE.
     This has been fully automated for me since 2016 (or earlier).
     This script implements that automation.
-    I tweaked the logic until managers and alloc both stopped sending error messages.
+    I tweaked the logic until managers and alloc both stopped whinging.
     """)
 parser.add_argument(
     '--systemd-timer', action='store_true',
@@ -73,12 +77,7 @@ try:
         text=True,
         stdout=subprocess.PIPE,  # for --systemd-timer
         stderr=subprocess.PIPE,  # for --systemd-timer
-        input=('\n'.join(timesheet_ids)
-               # Add a trailing line to workaround
-               # "alloc submit" brain damage.
-               # printf '123\n456' | alloc submit
-               # ==> submit 123 and 45 (not 456)!
-               + '\n'))
+        input='\n'.join(timesheet_ids))
 except subprocess.CalledProcessError as e:
     body = (
         f'{e}\n'       # includes includes the command & the exit code
