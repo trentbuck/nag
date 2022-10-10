@@ -1,6 +1,7 @@
 [Service]
 # FIXME: uncomment in systemd/bullseye-backports.
 #ExecSearchPath=/usr/local/bin/usr/bin:/bin:%h/.local/bin
+Environment=PATH="$PATH:%h/.local/bin/"
 ExecStart=%h/.local/bin/nag2al-wrapper
 
 # Backup the .timelog file.
