@@ -1,5 +1,5 @@
 #!/bin/bash -eEu
-PATH=$PATH:/usr/src/alloc/bin   # YUK.
+PATH="$PATH:$HOME/.local/bin"   # YUK.
 trap 'echo >&2 "$0: unknown error"' ERR
 
 day1= time1= task1= comment1=
