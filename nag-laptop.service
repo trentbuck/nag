@@ -1,4 +1,5 @@
 [Service]
-ExecSearchPath=/usr/local/bin/usr/bin:/bin:%h/.local/bin
 # NOTE: "screen -X screen y" not "screen y" because the latter requires a controlling terminal (even though it does not use it).
-ExecStart=screen -X screen nag-laptop
+# FIXME: uncomment in systemd/bullseye-backports.
+#ExecSearchPath=/usr/local/bin/usr/bin:/bin:%h/.local/bin
+ExecStart=screen -X screen %h/.local/bin/nag-laptop

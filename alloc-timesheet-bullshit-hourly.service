@@ -1,3 +1,4 @@
 [Service]
-ExecSearchPath=/usr/local/bin/usr/bin:/bin:%h/.local/bin
-ExecStart=alloc-timesheet-bullshit --systemd-timer
+# FIXME: uncomment in systemd/bullseye-backports.
+#ExecSearchPath=/usr/local/bin/usr/bin:/bin:%h/.local/bin
+ExecStart=%h/.local/bin/alloc-timesheet-bullshit --systemd-timer
