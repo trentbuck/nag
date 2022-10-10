@@ -12,7 +12,7 @@ grep "^$(date -I -dyesterday)" ~/.timelog |
 awk '{print}END{print $1, $2, "fnord"}' |
 
 # Do the nag2al stuff.
-chronic nag2al |
+chronic ~/.local/bin/nag2al |
 
 # Instead of putting stuff into "journalctl --user",
 # which ends up in logcheck@ emails,
