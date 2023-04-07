@@ -2,4 +2,4 @@
 # NOTE: "screen -X screen y" not "screen y" because the latter requires a controlling terminal (even though it does not use it).
 # FIXME: uncomment in systemd/bullseye-backports.
 #ExecSearchPath=/usr/local/bin/usr/bin:/bin:%h/.local/bin
-ExecStart=screen -X screen %h/.local/bin/nag-laptop -w
+ExecStart=screen -X screen -t nag flock --conflict-exit-code=0 --nonblock /run/user/1000/nag-laptop-screen.lock %h/.local/bin/nag-laptop -w
