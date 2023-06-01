@@ -86,7 +86,7 @@ except subprocess.CalledProcessError as e:
     if args.systemd_timer:
         subprocess.run(
             ['mail',
-             '--subject', 'alloc-timesheet-bullshit Failed',
+             '-s', 'alloc-timesheet-bullshit Failed',
              os.getlogin()],
             text=True,
             check=True,
